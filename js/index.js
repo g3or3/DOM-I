@@ -45,9 +45,8 @@ let navLinks = document.getElementsByTagName("a")
 let i = 0
 for (link of navLinks) {
   link.textContent = Object.values(siteContent['nav'])[i++]
+  link.style.color = "green"
 }
-
-// document.getElementsByTagName('a').forEach(link => link.textContent = Object.values(siteContent['nav'])[i++])
 
 let headingText = document.querySelector("h1")
 headingText.textContent = siteContent['cta']['h1']
@@ -81,3 +80,12 @@ contact.querySelectorAll('p').forEach(p => p.textContent = contactInfo[i++])
 
 let footer = document.querySelector('footer')
 footer.querySelector('p').textContent = siteContent['footer']['copyright']
+
+lastAnchorTag = document.createElement("a")
+lastAnchorTag.textContent = "Last"
+lastAnchorTag.style.color = "green"
+firstAnchorTag = document.createElement("a")
+firstAnchorTag.textContent = "First"
+firstAnchorTag.style.color = "green"
+document.querySelector('nav').append(lastAnchorTag)
+document.querySelector('nav').prepend(firstAnchorTag)

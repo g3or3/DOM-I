@@ -40,3 +40,44 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+let navLinks = document.getElementsByTagName("a")
+let i = 0
+for (link of navLinks) {
+  link.textContent = Object.values(siteContent['nav'])[i++]
+}
+
+// document.getElementsByTagName('a').forEach(link => link.textContent = Object.values(siteContent['nav'])[i++])
+
+let headingText = document.querySelector("h1")
+headingText.textContent = siteContent['cta']['h1']
+
+document.querySelector('button').textContent = siteContent['cta']['button']
+document.querySelector('#cta-img').setAttribute('src', siteContent['cta']['img-src'])
+
+let h4Links = []
+let pText = []
+
+for (obj of Object.entries(siteContent)) {
+  for (otherObj of Object.entries(obj[1])) {
+    if (otherObj[0].includes('h4')) h4Links.push(otherObj[1])
+    if (otherObj[0].includes('content')) pText.push(otherObj[1])
+  }
+}
+
+i = 0
+document.querySelectorAll('h4').forEach(heading => heading.textContent = h4Links[i++])
+
+i = 0
+mainText = document.querySelector('.main-content')
+mainText.querySelectorAll('p').forEach(p => p.textContent = pText[i++])
+
+document.querySelector('.middle-img').setAttribute('src', siteContent["main-content"]["middle-img-src"])
+
+let contactInfo = Object.values(siteContent['contact'])
+i = 1
+contact = document.querySelector('.contact')
+contact.querySelectorAll('p').forEach(p => p.textContent = contactInfo[i++])
+
+let footer = document.querySelector('footer')
+footer.querySelector('p').textContent = siteContent['footer']['copyright']
